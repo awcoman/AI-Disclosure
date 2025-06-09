@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Assisted Communication Survey</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    textarea { width: 100%; height: 150px; }
+    button { margin-top: 10px; }
+    #ai-output { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <h2>Workplace Communication Scenario</h2>
+  <p><strong>Scenario:</strong> You need to inform a team member about a missed project deadline.</p>
+
+  <textarea id="user-input" placeholder="Compose your message here..."></textarea><br>
+
+  <button onclick="useAI()">Use AI Assistance</button>
+  <button onclick="discloseAI()">Disclose AI Use</button>
+
+  <div id="ai-output"></div>
+
+  <script>
+    let aiUsed = false;
+    let aiDisclosed = false;
+
+    function useAI() {
+      // Simulate AI assistance (replace with actual AI integration)
+      const aiMessage = "Hi [Team Member], I wanted to discuss the recent project deadline. Let's find a time to talk about how we can get back on track.";
+      document.getElementById('user-input').value = aiMessage;
+      aiUsed = true;
+      logEvent('AI assistance used');
+    }
+
+    function discloseAI() {
+      if (aiUsed) {
+        aiDisclosed = true;
+        logEvent('AI use disclosed');
+        alert('You have disclosed the use of AI in composing this message.');
+      } else {
+        alert('You have not used AI assistance yet.');
+      }
+    }
+
+    function logEvent(action) {
+      const timestamp = new Date().toISOString();
+      const data = {
+        action: action,
+        timestamp: timestamp,
+        message: document.getElementById('user-input').value
+      };
+      console.log('Event Logged:', data);
+      // Replace the console.log with actual data logging to your backend or analytics tool
+    }
+  </script>
+
+</body>
+</html>
